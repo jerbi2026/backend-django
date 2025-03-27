@@ -1,4 +1,3 @@
-#!/bin/bash
 
 # Créer un environnement virtuel
 python3 -m venv venv

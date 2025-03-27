@@ -120,6 +120,8 @@ task_management_project/
 ├── core/              # Utilitaires partagés
 ├── tests/             # Tests unitaires et d'intégration
 └── docs/              # Documentation
+└── task_management/   # Configurations
+└── scripts/           # Commandes pour démarrer le projet 
 ```
 
 ## 🔐 Variables d'Environnement Importantes
@@ -131,11 +133,72 @@ task_management_project/
 | `DATABASE_URL` | URL de connexion à la base de données | `postgres://user:pass@localhost/db` |
 | `REDIS_URL` | URL du serveur Redis | `redis://localhost:6379/0` |
 
-## 🔒 Sécurité
 
-- Ne partagez jamais votre fichier `.env`
-- Utilisez des mots de passe forts
-- Activez l'authentification à deux facteurs
-- Maintenez vos dépendances à jour
 
+# 🌐 Documentation des Endpoints de l'API
+
+## 📦 Endpoints de Tâches (TaskViewSet)
+Base URL: `/api/tasks/`
+
+### Opérations CRUD
+- `GET /` : Lister toutes les tâches
+- `POST /` : Créer une nouvelle tâche
+- `GET /{task_id}/` : Détails d'une tâche spécifique
+- `PUT /{task_id}/` : Mettre à jour une tâche
+- `DELETE /{task_id}/` : Supprimer une tâche
+
+### Actions Personnalisées
+- `POST /{task_id}/add_comment/` : Ajouter un commentaire à une tâche
+
+## 👥 Endpoints Utilisateurs (UserViewSet)
+Base URL: `/api/users/`
+
+### Authentification et Profil
+- `POST /register/` : Inscription d'un nouvel utilisateur
+  - Requiert : username, email, password
+  - Retourne : user_id, username, email
+
+- `GET /profile/` : Récupérer le profil de l'utilisateur connecté
+- `PUT /profile/` : Mettre à jour le profil de l'utilisateur
+- `PATCH /profile/` : Mise à jour partielle du profil
+
+## 📁 Endpoints de Catégories (CategoryViewSet)
+Base URL: `/api/categories/`
+
+### Opérations CRUD (Réservées aux administrateurs)
+- `GET /` : Lister toutes les catégories
+- `POST /` : Créer une nouvelle catégorie
+- `GET /{category_id}/` : Détails d'une catégorie
+- `PUT /{category_id}/` : Mettre à jour une catégorie
+- `DELETE /{category_id}/` : Supprimer une catégorie
+
+## 🚨 Endpoints de Priorités (PriorityViewSet)
+Base URL: `/api/priorities/`
+
+### Opérations CRUD (Réservées aux administrateurs)
+- `GET /` : Lister toutes les priorités
+- `POST /` : Créer une nouvelle priorité
+- `GET /{priority_id}/` : Détails d'une priorité
+- `PUT /{priority_id}/` : Mettre à jour une priorité
+- `DELETE /{priority_id}/` : Supprimer une priorité
+
+## 💬 Endpoints de Commentaires (CommentViewSet)
+Base URL: `/api/comments/`
+
+### Opérations CRUD
+- `GET /` : Lister tous les commentaires
+- `POST /` : Créer un nouveau commentaire
+- `GET /{comment_id}/` : Détails d'un commentaire
+- `PUT /{comment_id}/` : Mettre à jour un commentaire
+- `DELETE /{comment_id}/` : Supprimer un commentaire
+
+## 🔐 Permissions
+- La plupart des endpoints nécessitent une authentification
+- Les endpoints de catégories et priorités sont réservés aux administrateurs
+- Les utilisateurs ne peuvent modifier que leurs propres ressources
+
+## 📝 Notes
+- Tous les endpoints retournent des réponses JSON
+- Les erreurs de validation renverront un code 400
+- L'authentification se fait via token ou session
 

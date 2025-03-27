@@ -31,17 +31,13 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         }
 
     def validate(self, data):
-        """
-        Vérification que les mots de passe correspondent
-        """
+       
         if data['password'] != data['password_confirm']:
             raise serializers.ValidationError({"password_confirm": "Les mots de passe ne correspondent pas."})
         return data
 
     def create(self, validated_data):
-        """
-        Création de l'utilisateur avec le mot de passe hashé
-        """
+        
         validated_data.pop('password_confirm')
         user = User.objects.create_user(
             username=validated_data['username'],

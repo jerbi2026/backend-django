@@ -3,9 +3,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractUser):
-    """
-    Modèle utilisateur personnalisé avec des champs supplémentaires
-    """
+   
     email = models.EmailField(_('email address'), unique=True)
     profile_picture = models.ImageField(
         upload_to='profile_pics/', 
