@@ -27,7 +27,7 @@ Ce projet est un système complet de gestion de tâches développé avec Django,
 
 ```bash
 git clone https://github.com/jerbi2026/backend-django.git
-cd task-management-backend
+cd backend-django
 ```
 
 ### 2. Configuration de l'Environnement Virtuel
