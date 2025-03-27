@@ -26,7 +26,7 @@ Ce projet est un système complet de gestion de tâches développé avec Django,
 ### 1. Clonage du Projet
 
 ```bash
-git clone https://github.com/votre-utilisateur/task-management-backend.git
+git clone https://github.com/jerbi2026/backend-django.git
 cd task-management-backend
 ```
 
