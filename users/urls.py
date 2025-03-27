@@ -7,5 +7,4 @@ router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
     path('', include(router.urls)),
-    # Vous pouvez ajouter d'autres URLs spécifiques ici
 ]

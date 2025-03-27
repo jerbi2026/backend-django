@@ -13,9 +13,6 @@ class User(AbstractUser):
         return self.username
 
 class Priority(models.Model):
-    """
-    Modèle pour définir les niveaux de priorité des tâches
-    """
     PRIORITY_CHOICES = [
         ('low', _('Faible')),
         ('medium', _('Moyen')),
@@ -28,9 +25,7 @@ class Priority(models.Model):
         return self.get_name_display()
 
 class Category(models.Model):
-    """
-    Modèle pour catégoriser les tâches
-    """
+   
     name = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
@@ -40,9 +35,7 @@ class Category(models.Model):
         verbose_name_plural = "Categories"
 
 class Task(models.Model):
-    """
-    Modèle principal pour représenter les tâches
-    """
+   
     STATUS_CHOICES = [
         ('pending', _('En cours')),
         ('completed', _('Terminé'))
@@ -62,9 +55,7 @@ class Task(models.Model):
         return self.title
 
 class Comment(models.Model):
-    """
-    Modèle pour les commentaires associés aux tâches
-    """
+    
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)

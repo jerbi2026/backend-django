@@ -6,23 +6,17 @@ User = get_user_model()
 
 class TaskModelTests(TestCase):
     def setUp(self):
-        # Créer un utilisateur de test
         self.user = User.objects.create_user(
             username='testuser', 
             email='test@example.com', 
             password='testpass123'
         )
         
-        # Créer une priorité
         self.priority = Priority.objects.create(name='medium')
         
-        # Créer une catégorie
         self.category = Category.objects.create(name='Développement')
 
     def test_create_task(self):
-        """
-        Test la création d'une tâche
-        """
         task = Task.objects.create(
             title='Test Task',
             description='Une tâche de test',
@@ -37,9 +31,6 @@ class TaskModelTests(TestCase):
         self.assertEqual(task.status, 'pending')
 
     def test_create_comment(self):
-        """
-        Test la création d'un commentaire
-        """
         task = Task.objects.create(
             title='Commentaire Task',
             user=self.user,

@@ -26,9 +26,6 @@ def task_created_or_updated(sender, instance, created, **kwargs):
 
 @receiver(post_delete, sender=Task)
 def task_deleted(sender, instance, **kwargs):
-    """
-    Envoie une mise à jour via WebSocket lors de la suppression d'une tâche
-    """
     channel_layer = get_channel_layer()
     async_to_sync(channel_layer.group_send)(
         "task_updates",

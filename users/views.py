@@ -7,25 +7,16 @@ from .serializers import UserRegistrationSerializer, UserProfileSerializer
 User = get_user_model()
 
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    Viewset pour la gestion des utilisateurs
-    """
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
 
     def get_serializer_class(self):
-        """
-        Choisit le serializer en fonction de l'action
-        """
         if self.action == 'create':
             return UserRegistrationSerializer
         return UserProfileSerializer
 
     @action(detail=False, methods=['POST'], permission_classes=[permissions.AllowAny])
     def register(self, request):
-        """
-        Endpoint pour l'enregistrement des nouveaux utilisateurs
-        """
         serializer = UserRegistrationSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
@@ -38,9 +29,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['GET', 'PUT', 'PATCH'], permission_classes=[permissions.IsAuthenticated])
     def profile(self, request):
-        """
-        Récupérer ou mettre à jour le profil de l'utilisateur connecté
-        """
         user = request.user
         
         if request.method == 'GET':

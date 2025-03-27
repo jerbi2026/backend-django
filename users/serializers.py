@@ -47,9 +47,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         return user
 
 class UserProfileSerializer(serializers.ModelSerializer):
-    """
-    Serializer pour afficher et mettre à jour le profil utilisateur
-    """
+    
     class Meta:
         model = User
         fields = [
