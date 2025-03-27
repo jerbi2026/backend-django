@@ -200,5 +200,4 @@ Base URL: `/api/comments/`
 ## 📝 Notes
 - Tous les endpoints retournent des réponses JSON
 - Les erreurs de validation renverront un code 400
-- L'authentification se fait via token ou session
 
